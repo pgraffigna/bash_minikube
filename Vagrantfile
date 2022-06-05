@@ -8,11 +8,15 @@ Vagrant.configure("2") do |config|
   config.vm.define "minikube" do |m|
     m.vm.box = IMAGEN 
     m.vm.hostname = "minikube-test"
-    # m.vm.provision "shell", path: "docker.sh"
-    # m.vm.provision "shell", path: "helm.sh"
-    # m.vm.provision "shell", path: "kubectl.sh"
-    # m.vm.provision "shell", path: "kubecolor.sh"
-    # m.vm.provision "shell", path: "minikube.sh"
+    m.vm.provision "shell", path: "docker.sh"
+    m.vm.provision "shell", path: "helm.sh"
+    m.vm.provision "shell", path: "kubectl.sh"
+    m.vm.provision "shell", path: "kubecolor.sh"
+    m.vm.provision "shell", path: "minikube.sh"
+  
+    m.vm.network "forwarded_port", guest: 8080, host: 8080
+    m.vm.network "forwarded_port", guest: 6443, host: 6443
+    m.vm.network "forwarded_port", guest: 2222, host: 2222
   end
 
   config.vm.provider :libvirt do |l|

@@ -1,6 +1,7 @@
 #!/bin/bash
 GPG=https://download.docker.com/linux/ubuntu/gpg
 URL=https://download.docker.com/linux/ubuntu
+USUARIO=vagrant
 
 echo "docker: [√] Actualizando la cache de los repos"
 sudo apt-get -qq update
@@ -20,8 +21,8 @@ sudo add-apt-repository \
 echo "docker: [√] De nuevo actualizando la cache de los repos"
 sudo apt-get -qq update
 
-echo "docker: [√] Instalando docker-ce" 
-sudo apt-get install -yq docker-ce
+echo "docker: [√] Instalando docker y docker-compose" 
+sudo apt-get install -yq docker-ce docker-compose
 
 echo "docker: [√] Agregando el usuario vagrant al grupo docker"
-sudo usermod -aG docker $USER && newgrp docker
+sudo usermod -aG docker $USUARIO && newgrp docker

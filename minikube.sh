@@ -8,7 +8,6 @@ echo "minikube: [√] Descargando Minikube"
 curl -Lso minikube "$MINI_URL" 
 
 echo "minikube: [√] Configurando Minikube"
-sudo cp minikube /usr/local/bin/minikube && sudo chmod +x /usr/local/bin/minikube
+sudo mv minikube /usr/local/bin/minikube && sudo chmod +x /usr/local/bin/minikube
 
-echo "minikube: [√] Iniciando el cluster"
-minikube start --vm-driver=docker
+echo "Iniciar el cluster --> minikube start --vm-driver=docker"
