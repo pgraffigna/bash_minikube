@@ -12,5 +12,3 @@ Testeado con vagrant + libvirt.
 - [x] kubectl.sh
 - [x] kubecolor.sh
 - [x] minikube.sh
-- [ ] gitlab via docker
-- [ ] gitlab-runner testing

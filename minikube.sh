@@ -10,4 +10,4 @@ curl -Lso minikube "$MINI_URL"
 echo "minikube: [√] Configurando Minikube"
 sudo mv minikube /usr/local/bin/minikube && sudo chmod +x /usr/local/bin/minikube
 
-echo "Iniciar el cluster --> minikube start --vm-driver=docker"
+echo "Iniciar el cluster --> minikube start --memory=1983mb --vm-driver=docker"

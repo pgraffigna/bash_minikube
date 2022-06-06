@@ -12,15 +12,11 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell", path: "helm.sh"
     m.vm.provision "shell", path: "kubectl.sh"
     m.vm.provision "shell", path: "kubecolor.sh"
-    m.vm.provision "shell", path: "minikube.sh"
-  
-    m.vm.network "forwarded_port", guest: 8080, host: 8080
-    m.vm.network "forwarded_port", guest: 6443, host: 6443
-    m.vm.network "forwarded_port", guest: 2222, host: 2222
+    m.vm.provision "shell", path: "minikube.sh"    
   end
 
   config.vm.provider :libvirt do |l|
-    l.memory = "2048"
+    l.memory = "4096"
     l.cpus = "2"
   end
 end
