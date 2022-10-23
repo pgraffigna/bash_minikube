@@ -1,13 +1,13 @@
 #!/bin/bash
-MINI_URL="https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+# script para instalar minikube
 
-echo "minikube: [√] Instalando dependencias"
-sudo apt-get install -yq conntrack
+###### variables
+MINIKUBE_URL="https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
 
-echo "minikube: [√] Descargando Minikube"
-curl -Lso minikube "$MINI_URL" 
+echo "minikube: descargando minikube"
+curl -s -L "${MINIKUBE_URL}" --output /tmp/minikube-linux-amd64
 
-echo "minikube: [√] Configurando Minikube"
-sudo mv minikube /usr/local/bin/minikube && sudo chmod +x /usr/local/bin/minikube
+echo "minikube: instalando minikube"
+sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
 
-echo "Iniciar el cluster --> minikube start --memory=1983mb --vm-driver=docker"
+echo -e "Para iniciar el cluster ==> minikube start --memory=1983mb --vm-driver=docker"

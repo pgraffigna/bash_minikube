@@ -1,6 +1,14 @@
 #!/bin/bash
-URL="https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+# script para instalar helm
 
-curl -fsSL -o get_helm.sh "$URL"
-chmod 700 get_helm.sh
-bash ./get_helm.sh && rm get_helm.sh
+###### variables
+HELM_URL="https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+
+echo "helm: descargando script para instalar HELM"
+curl -fsSL "${HELM_URL}" --output /tmp/get_helm.sh
+
+echo "helm: cambiando permisos al script"
+chmod 700 /tmp/get_helm.sh
+
+echo "helm: ejecutando el script"
+bash /tmp/get_helm.sh

@@ -1,5 +1,15 @@
 #!/bin/bash
-echo "kubectl: [√] Instalando Kubectl"
-curl -s -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
+# script para instalar kubectl
+
+###### variables
+VERSION="v1.25.0"
+KUBECTL_URL="https://dl.k8s.io/release/${VERSION}/bin/linux/amd64/kubectl"
+
+echo "kubectl: descargando kubectl"
+curl -s -L "${KUBECTL_URL}" --output /tmp/kubectl
+
+echo "kubectl: cambiando permisos al binario"
+chmod +x /tmp/kubectl
+
+echo "kubectl: moviendo el binario al PATH"
+sudo mv /tmp/kubectl /usr/local/bin/kubectl

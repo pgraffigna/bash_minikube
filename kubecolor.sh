@@ -1,14 +1,17 @@
 #!/bin/bash
-URL_DEB="http://archive.ubuntu.com/ubuntu/pool/universe/k/kubecolor/kubecolor_0.0.9-2_amd64.deb"
-DEB="kubecolor_0.0.9-2_amd64.deb"
+# script para instalar kubecolor
 
-echo "kubecolor: [√] Descargando deb"
-curl -s -LO "$URL_DEB"
+######## variables
+VERSION="0.0.20-2"
+KUBECOLOR_URL="http://archive.ubuntu.com/ubuntu/pool/universe/k/kubecolor/kubecolor_${VERSION}_amd64.deb"
+DEB="kubecolor_${VERSION}_amd64.deb"
 
-echo "kubecolor: [√] Instalando deb"
-sudo dpkg -i "$DEB" && rm "$DEB"
+echo "kubecolor: descargando deb"
+curl -s -L "${KUBECOLOR_URL}" --output /tmp/$DEB
 
-echo "kubecolor: [√] Editando .bashrc"
+echo "kubecolor: instalando deb"
+sudo dpkg -i "/tmp/$DEB"
+
+echo "kubecolor: editando .bashrc"
 echo -e "alias kubectl='kubecolor'" >> ~/.bashrc
 
- 

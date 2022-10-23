@@ -1,28 +1,30 @@
 #!/bin/bash
-GPG=https://download.docker.com/linux/ubuntu/gpg
-URL=https://download.docker.com/linux/ubuntu
+# script para instalar docker + docker-compose
+
+###### variables
+DOCKER_URL=https://download.docker.com/linux/ubuntu
 USUARIO=vagrant
 
-echo "docker: [√] Actualizando la cache de los repos"
+echo "docker: actualizando la cache de los repos"
 sudo apt-get -qq update
 
-echo "docker: [√] Instalando dependencias"
+echo "docker: instalando dependencias"
 sudo apt-get install -yq apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
-echo "docker: [√] Agregando la llave GPG de docker"
-curl -fsSL  $GPG | sudo apt-key add -
+echo "docker: agregando la llave GPG de docker"
+curl -fsSL  "${DOCKER_URL}/gpg" | sudo apt-key add -
 
-echo "docker: [√] Agregando el repositorio"
+echo "docker: agregando el repositorio"
 sudo add-apt-repository \
-   "deb [arch=amd64] $URL \
+   "deb [arch=amd64] "${DOCKER_URL}" \
    $(lsb_release -cs) \
    stable"
 
-echo "docker: [√] De nuevo actualizando la cache de los repos"
+echo "docker: de nuevo actualizando la cache de los repos"
 sudo apt-get -qq update
 
-echo "docker: [√] Instalando docker y docker-compose" 
+echo "docker: instalando docker y docker-compose"
 sudo apt-get install -yq docker-ce docker-compose
 
-echo "docker: [√] Agregando el usuario vagrant al grupo docker"
-sudo usermod -aG docker $USUARIO && newgrp docker
+echo "docker: agregando el usuario vagrant al grupo docker"
+sudo usermod -aG docker "${USUARIO}" && newgrp docker
