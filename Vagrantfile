@@ -7,11 +7,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "minikube" do |m|
     m.vm.box = IMAGEN
-    m.vm.hostname = "minikube-test"
+    m.vm.hostname = "minikube"
     m.vm.provision "shell", path: "docker.sh"
     m.vm.provision "shell", path: "helm.sh"
     m.vm.provision "shell", path: "kubectl.sh"
     m.vm.provision "shell", path: "kubecolor.sh"
+    m.vm.provision "shell", path: "cri-dockerd.sh"
+    m.vm.provision "shell", path: "cri-tools.sh"
     m.vm.provision "shell", path: "minikube.sh"
   end
 
@@ -21,5 +23,3 @@ Vagrant.configure("2") do |config|
   end
 end
 
-# Para copiar archivos entre equipos
-# scp -i /home/pgraffigna/.vagrant.d/insecure_private_key minikube.sh vagrant@192.168.122.91:

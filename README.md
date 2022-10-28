@@ -12,3 +12,7 @@ Testeado con vagrant + libvirt.
 - [x] kubectl.sh
 - [x] kubecolor.sh
 - [x] minikube.sh
+- [x] cri-dockerd.sh
+- [x] cri-tools.sh
+
+

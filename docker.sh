@@ -2,7 +2,7 @@
 # script para instalar docker + docker-compose
 
 ###### variables
-DOCKER_URL=https://download.docker.com/linux/ubuntu
+DOCKER_URL="https://download.docker.com/linux/ubuntu"
 USUARIO=vagrant
 
 echo "docker: actualizando la cache de los repos"

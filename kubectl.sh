@@ -2,8 +2,8 @@
 # script para instalar kubectl
 
 ###### variables
-VERSION="v1.25.0"
-KUBECTL_URL="https://dl.k8s.io/release/${VERSION}/bin/linux/amd64/kubectl"
+KUBECTL_VERSION="v1.25.0"
+KUBECTL_URL="https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
 
 echo "kubectl: descargando kubectl"
 curl -s -L "${KUBECTL_URL}" --output /tmp/kubectl
