@@ -1,15 +1,12 @@
 #!/bin/bash
-# script para instalar kubectl
-
-###### variables
-KUBECTL_VERSION="v1.25.0"
+KUBECTL_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
 KUBECTL_URL="https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
 
-echo "kubectl: descargando kubectl"
-curl -s -L "${KUBECTL_URL}" --output /tmp/kubectl
+echo "[KUBECTL] Descargando binario"
+curl -s -L "${KUBECTL_URL}" -o /tmp/kubectl
 
-echo "kubectl: cambiando permisos al binario"
+echo "[KUBECTL] Modificando permisos"
 chmod +x /tmp/kubectl
 
-echo "kubectl: moviendo el binario al PATH"
+echo "[KUBECTL] Moviendo el binario"
 sudo mv /tmp/kubectl /usr/local/bin/kubectl
