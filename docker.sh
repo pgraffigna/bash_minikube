@@ -3,9 +3,6 @@
 # Autor: Pablo Graffigna
 # URL: www.linkedin.com/in/pablo-graffigna
 #
-# debug
-set -e
-
 # Colores
 VERDE="\e[0;32m\033[1m"
 ROJO="\e[0;31m\033[1m"
@@ -24,7 +21,7 @@ DOCKER_URL="https://download.docker.com/linux/ubuntu"
 USUARIO=vagrant
 
 function configurando_dependencias(){
-   
+
    echo -e "${AMARILLO}[DOCKER]=== Actualizando la cache de los repos ===${FIN}"
    sudo apt-get -qq update
 
@@ -35,14 +32,14 @@ function configurando_dependencias(){
    sudo install -m 0755 -d /etc/apt/keyrings
    sudo curl -fsSL "${DOCKER_URL}/gpg" -o /etc/apt/keyrings/docker.asc
    sudo chmod a+r /etc/apt/keyrings/docker.asc
-   
+
    echo -e "${AMARILLO}[DOCKER]=== Agregando el repo ===${FIN}"
    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
       $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 }
 
 function instalando_docker(){
-   
+
    echo -e "${AMARILLO}[DOCKER]=== Actualizando la cache de los repos ===${FIN}"
    sudo apt-get -qq update
 

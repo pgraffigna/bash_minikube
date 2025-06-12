@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-ubuntu-pod-pvc
+spec:
+  containers:
+    - image: ubuntu
+      name: my-ubuntu-pod-c1
+      command: ["sleep", "infinity"]
+      volumeMounts:
+        - mountPath: /data
+          name: app-volume
+  volumes:
+    - name: app-volume
+      persistentVolumeClaim:
+        claimName: local-pvc

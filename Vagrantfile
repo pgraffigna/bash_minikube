@@ -1,6 +1,6 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
-IMAGEN = "generic/ubuntu2204"
-HOSTNAME = "minikube.home.lab"
+IMAGEN = "boxen/ubuntu-24.04"
+HOSTNAME = "minikube.home.local"
 
 Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
@@ -13,16 +13,14 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell", path: "helm.sh"
     m.vm.provision "shell", path: "kubectl.sh"
     m.vm.provision "shell", path: "kubecolor.sh"
-    m.vm.provision "shell", path: "cri-dockerd.sh"
-    m.vm.provision "shell", path: "cri-tools.sh"
     m.vm.provision "shell", path: "minikube.sh"
   end
 
-  config.vm.provider :libvirt do |l|
-    l.disk_bus = 'virtio'
-    l.memory = "4096"
-    l.cpus = "2"
-    l.graphics_type = 'none'
+  config.vm.provider :libvirt do |k|
+    k.disk_bus = 'virtio'
+    k.memory = "4096"
+    k.cpus = "2"
+    k.graphics_type = 'none'
   end
 end
 

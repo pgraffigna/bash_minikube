@@ -3,9 +3,6 @@
 # Autor: Pablo Graffigna
 # URL: www.linkedin.com/in/pablo-graffigna
 #
-# debug
-set -e
-
 # Colores
 VERDE="\e[0;32m\033[1m"
 ROJO="\e[0;31m\033[1m"
@@ -26,7 +23,7 @@ KUBECOLOR_DEB="kubecolor_${KUBECOLOR_VERSION}_amd64.deb"
 HOME=/home/vagrant
 
 function instalando_kubecolor(){
-    
+
     echo -e "${AMARILLO}[KUBECOLOR]=== Descargando paquete ===${FIN}"
     curl -s -L "${KUBECOLOR_URL}" -o "/tmp/${KUBECOLOR_DEB}"
 

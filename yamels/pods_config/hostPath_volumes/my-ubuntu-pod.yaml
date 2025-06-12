@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-ubuntu-pod
+spec:
+  containers:
+    - image: ubuntu
+      name: my-ubuntu
+      command: ["sleep", "infinity"]
+      volumeMounts:
+        - mountPath: /app
+          name: app-volume
+  volumes:
+    - name: app-volume
+      hostPath:
+        path: /mnt/app
